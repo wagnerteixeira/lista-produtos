@@ -33,17 +33,19 @@ interface IProps {
     productDescription: string;
     productPrice: number,
     actionType: ActionButtonType;
+    handleRemoveProduct?: () => void;
 }
 
 const ItemList: React.FC<IProps>  = ({
     productDescription, 
     productPrice,
-    actionType
+    actionType,
+    handleRemoveProduct
 }) => {
     return(
         <Wrapper>
             {productDescription} - Preço R${productPrice}
-            <ActionButton actionType={actionType}>{actionType === ActionButtonType.add ? 'adicionar' : 'remover'}</ActionButton>
+            <ActionButton onClick={handleRemoveProduct} actionType={actionType}>{actionType === ActionButtonType.add ? 'adicionar' : 'remover'}</ActionButton>
         </Wrapper>
     )
 }

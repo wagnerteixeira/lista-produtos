@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import  { ProductsContext }   from '../../context/ProductsContext';
+
 const Wrapper = styled.div`
     width: ${props => props.theme.width}px;
     height: 300px;    
@@ -10,30 +12,21 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.h2`
-
+    
 `
 
 const Content = styled.span`
     font-size: 1.2em;
 `
 
-interface CartDetailProps {
-    totalCart?: number;
-}
-
-const defaultProps: CartDetailProps = {
-    totalCart : 0
-} 
-
-const CartDetail: React.FC<CartDetailProps> = ({totalCart}) => {
+const CartDetail: React.FC = () => {
+    const { state } = React.useContext(ProductsContext); 
     return (
         <Wrapper>
             <Header>Detalhes da compra</Header>
-            <Content>Total: R${totalCart}</Content>
+            <Content>Total: R${state.total}</Content>
         </Wrapper>
     );
 }
-
-CartDetail.defaultProps = defaultProps;
 
 export default CartDetail;
