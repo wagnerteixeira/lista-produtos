@@ -29,4 +29,4 @@ const CartDetail: React.FC = () => {
     );
 }
 
-export default CartDetail;
+export default React.memo(CartDetail);
