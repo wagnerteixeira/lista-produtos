@@ -11,7 +11,7 @@ interface ActionButtonProps {
 }
 
 const ActionButton = styled.button<ActionButtonProps>`
-    background-color: ${props => props.actionType == ActionButtonType.add ? '#1155cc' : '#cc0000'};
+    background-color: ${props => props.actionType === ActionButtonType.add ? '#1155cc' : '#cc0000'};
     color: white;
     border-radius: 4px;
     border: 1px solid #000;

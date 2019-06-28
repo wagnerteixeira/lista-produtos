@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { IProduct } from '../components/types';
 
 import createCtx from './createCtx';
