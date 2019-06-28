@@ -3,27 +3,20 @@ import React from 'react';
 import HeaderContainer from '../commom/HeaderContainer';
 import ItemList from '../commom/ItemList';
 import { ActionButtonType } from '../commom/ItemList/ItemList';
-import { ProductsContext } from '../../context/ProductsContext';
+import { useProductsState, useProductsDispatch } from '../../context/ProductsContext';
 import { IProduct } from '../types';
 
 const Cart: React.FC = () => {
-  const { state, update } = React.useContext(ProductsContext);
-
+  const productsDispatch = useProductsDispatch();
+  const productsState = useProductsState();
   const handleAddProductToCart = (product: IProduct) => () => {
-    let newState = {
-      listCart: state.listCart.filter(p => p.code !== product.code),
-      listProduct: [...state.listProduct, product],
-      total: state.listCart
-        .filter(p => p.code !== product.code)
-        .reduce((prev: number, cur: IProduct) => prev + cur.price, 0),
-    };
-    update(newState);
+    productsDispatch({type: 'REMOVE_TO_CART', payload: product})
   };
 
   return (
     <>
       <HeaderContainer bgColor={'#666666'}>Carrinho</HeaderContainer>
-      {state.listCart.map(product => (
+      {productsState.listCart.map(product => (
         <ItemList
           key={product.code}
           productDescription={product.description}

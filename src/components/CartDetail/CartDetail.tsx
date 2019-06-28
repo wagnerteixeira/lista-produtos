@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import  { ProductsContext }   from '../../context/ProductsContext';
+import  { useProductsState }   from '../../context/ProductsContext';
 
 const Wrapper = styled.div`
     width: ${props => props.theme.width}px;
@@ -19,12 +19,12 @@ const Content = styled.span`
     font-size: 1.2em;
 `
 
-const CartDetail: React.FC = () => {
-    const { state } = React.useContext(ProductsContext); 
+const CartDetail: React.FC = () => {   
+    const productsState = useProductsState(); 
     return (
         <Wrapper>
             <Header>Detalhes da compra</Header>
-            <Content>Total: R${state.total}</Content>
+            <Content>Total: R${productsState.total}</Content>
         </Wrapper>
     );
 }
