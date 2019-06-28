@@ -14,8 +14,7 @@ const products : Array<IProduct> = [
 
 let total = cart.reduce((prev, cur) => prev + cur.price, 0);
 
-const [ctx, Provider]  = createCtx({listCart: cart, listProduct: products, total: total});
-
+const [ctx, Provider] = createCtx({listCart: cart, listProduct: products, total: total});
 
 export const ProductsProvider = Provider;
 export const ProductsContext = ctx;

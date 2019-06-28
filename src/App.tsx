@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductList from './components/ProductList';
-import Cart  from './components/Cart';
+import CartList from './components/CartList';
 import styled, { ThemeProvider } from 'styled-components';
 import defaultTheme from './styles/defaultTheme';
 
@@ -20,7 +20,7 @@ const App: React.FC = () => {
             <Container>
               <div>
                 <ProductList />
-                <Cart />
+                <CartList />
               </div>            
               <CartDetail />
             </Container>

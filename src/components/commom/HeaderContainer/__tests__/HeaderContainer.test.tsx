@@ -7,7 +7,7 @@ import HeaderContainer from '../HeaderContainer';
 describe('HeaderContainer', () =>{
     it('should render', () => {
         const { getByText } = render(<HeaderContainer>Test</HeaderContainer>);
-        expect(getByText('Test')).toBeInTheDocument();
+        expect(getByText(/test/i)).toBeInTheDocument();
     });
 })
 
