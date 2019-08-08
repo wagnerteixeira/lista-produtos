@@ -47,16 +47,30 @@ let reducer = (state: ProductState, action: Action) => {
 const stateCtx = createContext(initialState);
 const dispatchCtx = createContext((() => 0) as React.Dispatch<Action>);
 
+interface IContext {
+  state: ProductState,
+  dispatch: (arg: Action) => void;
+}
+
+const ctx = createContext<null | IContext>(null);
+
 export const ProductsProvider: React.ComponentType = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const value = {
+    state,
+    dispatch,
+  };
+
   return (
-    <dispatchCtx.Provider value={dispatch}>
-      <stateCtx.Provider value={state}>
-        {children}
-      </stateCtx.Provider>
-    </dispatchCtx.Provider>
+    <ctx.Provider value={value}>      
+        {children}      
+    </ctx.Provider>
   );
 };
 
 export const useProductsDispatch = () => useContext(dispatchCtx);
 export const useProductsState = () => useContext(stateCtx);
+export const use = () => useContext(ctx);
+const a  = use();
+
